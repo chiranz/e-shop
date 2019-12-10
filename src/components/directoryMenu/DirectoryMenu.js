@@ -4,7 +4,7 @@ import "./directoryMenu.style.scss";
 import MenuItem from "../menuItem/MenuItem";
 
 export default function DirectoryMenu() {
-  const [sections, setSections] = useState(SHOP_SECTIONS);
+  const [sections] = useState(SHOP_SECTIONS);
   return (
     <div className="directory-menu">
       {sections.map(({ id, ...otherSectionProps }) => (
