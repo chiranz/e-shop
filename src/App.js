@@ -24,7 +24,6 @@ function App() {
     });
     return () => unSubscribe();
   }, []);
-  console.log(currentUser);
   return (
     <div>
       <Header currentUser={currentUser} />
