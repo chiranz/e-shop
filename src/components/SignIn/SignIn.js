@@ -10,18 +10,11 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(email, password);
     setEmail(() => "");
     setPassword(() => "");
   }
-  function handleChange(e) {
-    if (e.target.name === "email") {
-      setEmail(e.target.value);
-    } else {
-      if (e.target.name === "password") {
-        setPassword(e.target.value);
-      }
-    }
-  }
+
   return (
     <div className="sign-in">
       <h2>I already have an account!</h2>
@@ -32,7 +25,7 @@ export default function SignIn() {
           name="email"
           value={email}
           type="email"
-          handleChange={handleChange}
+          handleChange={setEmail}
           required
         />
         <FormInput
@@ -40,7 +33,7 @@ export default function SignIn() {
           name="password"
           value={password}
           type="password"
-          handleChange={handleChange}
+          handleChange={setPassword}
           required
         />
         <div className="buttons">
