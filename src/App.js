@@ -7,7 +7,7 @@ import ShopPage from "./pages/shop/ShopPage";
 import Header from "./components/header/Header";
 import AuthenticationPage from "./pages/Register&Login/AuthenticationPage";
 import { auth, createUserProfileDocument } from "./firebase/firebaseUtils";
-import { SET_CURRENT_USER } from "./actions/types";
+import { SET_CURRENT_USER } from "./reducers/actionTypes";
 
 function App() {
   const { currentUser } = useSelector(state => state.user);
