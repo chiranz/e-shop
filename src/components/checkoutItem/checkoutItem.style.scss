@@ -19,8 +19,19 @@
   .price {
     width: 23%;
   }
+  .quantity {
+    display: flex;
+    .arrow {
+      cursor: pointer;
+    }
+    .value {
+      margin: 0 10px;
+    }
+  }
+
   .remove-button {
     width: auto;
     margin: auto;
+    cursor: pointer;
   }
 }
