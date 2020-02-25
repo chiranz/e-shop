@@ -2,19 +2,31 @@ import React from "react";
 import "./cartDropDown.style.scss";
 import CustomButton from "../CustomButton/CustomButton";
 import CartItem from "../cart-item/CartItem";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { withRouter } from "react-router";
+import { TOGGLE_CART_HIDDEN } from "../../reducers/actionTypes";
 
-export default function CartDropDown() {
+function CartDropDown({ history }) {
   const { cartItems } = useSelector(state => state.cart);
-
+  const dispatch = useDispatch();
+  const handleCheckoutClick = () => {
+    history.push("/checkout");
+    dispatch({
+      type: TOGGLE_CART_HIDDEN
+    });
+  };
   return (
     <div className="cart-dropdown">
       <div className="cart-items">
-        {cartItems.map((cartItem, i) => (
-          <CartItem key={i} item={cartItem} />
-        ))}
+        {cartItems.length ? (
+          cartItems.map((cartItem, i) => <CartItem key={i} item={cartItem} />)
+        ) : (
+          <span className="empty-message">Your cart is empty!</span>
+        )}
       </div>
-      <CustomButton>Go To Checkout</CustomButton>
+      <CustomButton onClick={handleCheckoutClick}>Go To Checkout</CustomButton>
     </div>
   );
 }
+
+export default withRouter(CartDropDown);

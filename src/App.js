@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import HomePage from "./pages/homepage/HomePage";
+import CheckoutPage from "./pages/checkout/CheckoutPage";
 import ShopPage from "./pages/shop/ShopPage";
 import Header from "./components/header/Header";
 import AuthenticationPage from "./pages/Register&Login/AuthenticationPage";
@@ -47,6 +48,7 @@ function App() {
             currentUser ? <Redirect to="/" /> : <AuthenticationPage />
           }
         />
+        <Route exact path="/checkout" component={CheckoutPage} />
       </Switch>
     </div>
   );

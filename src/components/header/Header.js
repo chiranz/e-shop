@@ -13,10 +13,10 @@ export default function Header() {
     cart: { hidden, cartItems }
   } = useSelector(state => state);
 
-  const itemCount = cartItems.reduce((itemCount, cartItem) => {
-    itemCount = itemCount + cartItem.quantity;
-    return itemCount;
-  }, 0);
+  const itemCount = cartItems.reduce(
+    (itemCount, cartItem) => itemCount + cartItem.quantity,
+    0
+  );
   return (
     <div className="header">
       <Link to="/" className="logo-container">
