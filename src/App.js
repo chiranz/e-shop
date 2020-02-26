@@ -40,7 +40,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/shop" component={ShopPage} />
+        <Route path="/shop" component={ShopPage} />
         <Route
           exact
           path="/signin"
@@ -48,6 +48,7 @@ function App() {
             currentUser ? <Redirect to="/" /> : <AuthenticationPage />
           }
         />
+
         <Route exact path="/checkout" component={CheckoutPage} />
       </Switch>
     </div>
