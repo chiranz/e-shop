@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "./header.style.scss";
 import { auth } from "../../firebase/firebaseUtils";
@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import CartIcon from "../cartIcon/CartIcon";
 import CartDropDown from "../cartDropDown/CartDropDown";
 
-export default function Header() {
+function Header({ history }) {
   const {
     user: { currentUser },
     cart: { hidden, cartItems }
@@ -40,7 +40,8 @@ export default function Header() {
         )}
         <CartIcon itemCount={itemCount} />
       </div>
-      {hidden ? null : <CartDropDown />}
+      {hidden ? null : <CartDropDown history={history} />}
     </div>
   );
 }
+export default withRouter(Header);

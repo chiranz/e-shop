@@ -3,7 +3,6 @@ import "./cartDropDown.style.scss";
 import CustomButton from "../CustomButton/CustomButton";
 import CartItem from "../cart-item/CartItem";
 import { useSelector, useDispatch } from "react-redux";
-import { withRouter } from "react-router";
 import { TOGGLE_CART_HIDDEN } from "../../reducers/actionTypes";
 
 function CartDropDown({ history }) {
@@ -29,4 +28,4 @@ function CartDropDown({ history }) {
   );
 }
 
-export default withRouter(CartDropDown);
+export default CartDropDown;

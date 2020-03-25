@@ -34,7 +34,7 @@ function App() {
       });
     });
     return () => unSubscribe();
-  }, []);
+  }, [dispatch]);
   return (
     <div>
       <Header />
