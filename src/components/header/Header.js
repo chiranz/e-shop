@@ -18,29 +18,31 @@ function Header({ history }) {
     0
   );
   return (
-    <div className="header">
-      <Link to="/" className="logo-container">
-        <Logo className="logo" />
-      </Link>
-      <div className="options">
-        <Link to="/shop" className="option">
-          SHOP
+    <div className="wrapper">
+      <div className="header">
+        <Link to="/" className="logo-container">
+          <Logo className="logo" />
         </Link>
-        <Link to="/shop" className="option">
-          CONTACT
-        </Link>
-        {currentUser ? (
-          <div className="option" onClick={() => auth.signOut()}>
-            LOGOUT
-          </div>
-        ) : (
-          <Link to="/signin" className="option">
-            LOGIN
+        <div className="options">
+          <Link to="/shop" className="option">
+            SHOP
           </Link>
-        )}
-        <CartIcon itemCount={itemCount} />
+          <Link to="/shop" className="option">
+            CONTACT
+          </Link>
+          {currentUser ? (
+            <div className="option" onClick={() => auth.signOut()}>
+              LOGOUT
+            </div>
+          ) : (
+            <Link to="/signin" className="option">
+              LOGIN
+            </Link>
+          )}
+          <CartIcon itemCount={itemCount} />
+        </div>
+        {hidden ? null : <CartDropDown history={history} />}
       </div>
-      {hidden ? null : <CartDropDown history={history} />}
     </div>
   );
 }

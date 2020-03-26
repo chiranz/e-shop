@@ -6,6 +6,10 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: scale 500ms ease-in;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .shopping-icon {

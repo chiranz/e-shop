@@ -38,19 +38,21 @@ function App() {
   return (
     <div>
       <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/shop" component={ShopPage} />
-        <Route
-          exact
-          path="/signin"
-          render={() =>
-            currentUser ? <Redirect to="/" /> : <AuthenticationPage />
-          }
-        />
+      <div style={{ maxWidth: "1100px", margin: "auto" }}>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/shop" component={ShopPage} />
+          <Route
+            exact
+            path="/signin"
+            render={() =>
+              currentUser ? <Redirect to="/" /> : <AuthenticationPage />
+            }
+          />
 
-        <Route exact path="/checkout" component={CheckoutPage} />
-      </Switch>
+          <Route exact path="/checkout" component={CheckoutPage} />
+        </Switch>
+      </div>
     </div>
   );
 }
