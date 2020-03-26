@@ -1,15 +1,14 @@
 import React from "react";
-import "./directoryMenu.style.scss";
 import MenuItem from "../menuItem/MenuItem";
 import { useSelector } from "react-redux";
-
+import { DirectoryMenuContainer } from "./DirectoryMenu.styled";
 export default function DirectoryMenu() {
   const { sections } = useSelector(state => state.directory);
   return (
-    <div className="directory-menu">
+    <DirectoryMenuContainer>
       {sections.map(({ id, ...otherSectionProps }) => (
         <MenuItem key={id} {...otherSectionProps} />
       ))}
-    </div>
+    </DirectoryMenuContainer>
   );
 }

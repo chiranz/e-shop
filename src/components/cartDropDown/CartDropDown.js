@@ -1,9 +1,13 @@
 import React from "react";
-import "./cartDropDown.style.scss";
 import CustomButton from "../CustomButton/CustomButton";
 import CartItem from "../cart-item/CartItem";
 import { useSelector, useDispatch } from "react-redux";
 import { TOGGLE_CART_HIDDEN } from "../../reducers/actionTypes";
+import {
+  CartDropDownContainer,
+  CartItemsContainer,
+  EmptyMessage
+} from "./CartDropDown.styled";
 
 function CartDropDown({ history }) {
   const { cartItems } = useSelector(state => state.cart);
@@ -15,16 +19,16 @@ function CartDropDown({ history }) {
     });
   };
   return (
-    <div className="cart-dropdown">
-      <div className="cart-items">
+    <CartDropDownContainer>
+      <CartItemsContainer>
         {cartItems.length ? (
           cartItems.map((cartItem, i) => <CartItem key={i} item={cartItem} />)
         ) : (
-          <span className="empty-message">Your cart is empty!</span>
+          <EmptyMessage>Your cart is empty!</EmptyMessage>
         )}
-      </div>
+      </CartItemsContainer>
       <CustomButton onClick={handleCheckoutClick}>Go To Checkout</CustomButton>
-    </div>
+    </CartDropDownContainer>
   );
 }
 

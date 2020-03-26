@@ -1,11 +1,17 @@
 import React from "react";
-import "./checkoutItem.style.scss";
 import { useDispatch } from "react-redux";
 import {
   CLEAR_ITEM_FROM_CART,
   ADD_ITEM,
   REMOVE_ITEM
 } from "../../reducers/actionTypes";
+import {
+  CheckoutImageContainer,
+  TextContainer,
+  QuantityContainer,
+  RemoveButton,
+  CheckoutItemContainer
+} from "./CheckoutItem.styled";
 
 export default function CheckoutItem({ cartItem }) {
   const { imageUrl, price, name, quantity } = cartItem;
@@ -30,24 +36,18 @@ export default function CheckoutItem({ cartItem }) {
   };
 
   return (
-    <div className="checkout-item">
-      <div className="image-container">
+    <CheckoutItemContainer>
+      <CheckoutImageContainer>
         <img src={imageUrl} alt="item" />
-      </div>
-      <span className="name">{name}</span>
-      <span className="quantity">
-        <div className="arrow" onClick={handleRemoveItem}>
-          &#10094;
-        </div>
-        <span className="value">{quantity}</span>
-        <div className="arrow" onClick={handleAddItem}>
-          &#10095;
-        </div>
-      </span>
-      <span className="price">{price}</span>
-      <div className="remove-button" onClick={handleRemoveFromCart}>
-        &#10005;
-      </div>
-    </div>
+      </CheckoutImageContainer>
+      <TextContainer>{name}</TextContainer>
+      <QuantityContainer>
+        <div onClick={handleRemoveItem}>&#10094;</div>
+        <span>{quantity}</span>
+        <div onClick={handleAddItem}>&#10095;</div>
+      </QuantityContainer>
+      <TextContainer>{price}</TextContainer>
+      <RemoveButton onClick={handleRemoveFromCart}>&#10005;</RemoveButton>
+    </CheckoutItemContainer>
   );
 }

@@ -1,8 +1,14 @@
 import React from "react";
-import "./checkoutPage.style.scss";
 import { useSelector } from "react-redux";
 import CheckoutItem from "../../components/checkoutItem/CheckoutItem";
 import StripeButton from "../../components/stripe-button/StripeButton";
+import {
+  CheckoutPageContainer,
+  CheckoutHeaderContainer,
+  HeaderBlock,
+  CheckoutTotal,
+  TestWarningContainer
+} from "./CheckoutPage.styled";
 
 export default function CheckoutPage() {
   const { cartItems } = useSelector(state => state.cart);
@@ -11,33 +17,33 @@ export default function CheckoutPage() {
     0
   );
   return (
-    <div className="checkout-page">
-      <div className="checkout-header">
-        <div className="header-block">
+    <CheckoutPageContainer>
+      <CheckoutHeaderContainer>
+        <HeaderBlock>
           <span>Product</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlock>
+        <HeaderBlock>
           <span>Description</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlock>
+        <HeaderBlock>
           <span>Quantity</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlock>
+        <HeaderBlock>
           <span>Price</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlock>
+        <HeaderBlock>
           <span>Remove</span>
-        </div>
-      </div>
+        </HeaderBlock>
+      </CheckoutHeaderContainer>
       {cartItems.map(cartItem => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
-      <div className="total">
+      <CheckoutTotal>
         <span>Total: ${cartTotal}</span>
-      </div>
+      </CheckoutTotal>
       {cartTotal ? (
         <>
-          <div className="test-warning">
+          <TestWarningContainer>
             *Please use the following test credit card for payments*
             <br />
             4242-4242-4242-4242
@@ -45,12 +51,12 @@ export default function CheckoutPage() {
             Exp: 01/20Next
             <br />
             CVV: 123
-          </div>
+          </TestWarningContainer>
           <StripeButton price={cartTotal} />
         </>
       ) : (
         ""
       )}
-    </div>
+    </CheckoutPageContainer>
   );
 }
