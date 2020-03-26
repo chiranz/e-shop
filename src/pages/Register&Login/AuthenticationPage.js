@@ -1,13 +1,13 @@
 import React from "react";
-import "./authenticationPage.style.scss";
 import SignIn from "../../components/SignIn/SignIn";
 import SignUp from "../../components/SignUp/SignUp";
+import { AuthenticationPageContainer } from "./AuthenticationPage.styled";
 
 export default function AuthenticationPage() {
   return (
-    <div className="authentication-page">
+    <AuthenticationPageContainer>
       <SignIn />
       <SignUp />
-    </div>
+    </AuthenticationPageContainer>
   );
 }

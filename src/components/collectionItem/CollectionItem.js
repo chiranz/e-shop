@@ -1,8 +1,14 @@
 import React from "react";
-import "./collectionItem.style.scss";
-import CustomButton from "../CustomButton/CustomButton";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../reducers/cart/cartActions";
+import {
+  CollectionItemContainer,
+  BackgroundImage,
+  CollectionFooterContainer,
+  CollectionFooterName,
+  CollectionFooterPrice,
+  AddButton
+} from "./CollectionItem.styled";
 
 export default function CollectionItem({ id, name, price, imageUrl }) {
   const item = {
@@ -16,15 +22,15 @@ export default function CollectionItem({ id, name, price, imageUrl }) {
     dispatch(addItem(item));
   };
   return (
-    <div className="collection-item">
-      <div className="image" style={{ backgroundImage: `url(${imageUrl})` }} />
-      <div className="collection-footer">
-        <span className="name">{name}</span>
-        <span className="price">${price}</span>
-      </div>
-      <CustomButton inverted onClick={handleAddItem}>
+    <CollectionItemContainer>
+      <BackgroundImage className="image" imageUrl={imageUrl} />
+      <CollectionFooterContainer>
+        <CollectionFooterName>{name}</CollectionFooterName>
+        <CollectionFooterPrice>${price}</CollectionFooterPrice>
+      </CollectionFooterContainer>
+      <AddButton inverted onClick={handleAddItem}>
         Add to cart
-      </CustomButton>
-    </div>
+      </AddButton>
+    </CollectionItemContainer>
   );
 }

@@ -1,11 +1,17 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
-import "./header.style.scss";
 import { auth } from "../../firebase/firebaseUtils";
 import { useSelector } from "react-redux";
 import CartIcon from "../cartIcon/CartIcon";
 import CartDropDown from "../cartDropDown/CartDropDown";
+import {
+  WrapperContainer,
+  HeaderContainer,
+  LogoContainer,
+  OptionsContainer,
+  OptionLink
+} from "./Header.styled";
 
 function Header({ history }) {
   const {
@@ -18,32 +24,27 @@ function Header({ history }) {
     0
   );
   return (
-    <div className="wrapper">
-      <div className="header">
-        <Link to="/" className="logo-container">
+    <WrapperContainer>
+      <HeaderContainer>
+        <LogoContainer to="/">
           <Logo className="logo" />
-        </Link>
-        <div className="options">
-          <Link to="/shop" className="option">
-            SHOP
-          </Link>
-          <Link to="/shop" className="option">
-            CONTACT
-          </Link>
+        </LogoContainer>
+
+        <OptionsContainer>
+          <OptionLink to="/shop">SHOP</OptionLink>
+          <OptionLink to="/shop">CONTACT</OptionLink>
           {currentUser ? (
-            <div className="option" onClick={() => auth.signOut()}>
+            <OptionLink as="div" onClick={() => auth.signOut()}>
               LOGOUT
-            </div>
+            </OptionLink>
           ) : (
-            <Link to="/signin" className="option">
-              LOGIN
-            </Link>
+            <OptionLink to="/signin">LOGIN</OptionLink>
           )}
           <CartIcon itemCount={itemCount} />
-        </div>
+        </OptionsContainer>
         {hidden ? null : <CartDropDown history={history} />}
-      </div>
-    </div>
+      </HeaderContainer>
+    </WrapperContainer>
   );
 }
 export default withRouter(Header);

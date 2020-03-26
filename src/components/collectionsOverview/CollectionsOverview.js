@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import CollectionPreview from "../collectionPreview/CollectionPreview";
 
 export default function CollectionsOverview({ match }) {
-  console.log(match);
   const { collections } = useSelector(state => state.shop);
   return (
     <div className="collections-overview">
