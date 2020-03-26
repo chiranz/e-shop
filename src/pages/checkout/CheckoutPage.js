@@ -35,16 +35,22 @@ export default function CheckoutPage() {
       <div className="total">
         <span>Total: ${cartTotal}</span>
       </div>
-      <div className="test-warning">
-        *Please use the following test credit card for payments*
-        <br />
-        4242-4242-4242-4242
-        <br />
-        Exp: 01/20Next
-        <br />
-        CVV: 123
-      </div>
-      <StripeButton price={cartTotal} />
+      {cartTotal ? (
+        <>
+          <div className="test-warning">
+            *Please use the following test credit card for payments*
+            <br />
+            4242-4242-4242-4242
+            <br />
+            Exp: 01/20Next
+            <br />
+            CVV: 123
+          </div>
+          <StripeButton price={cartTotal} />
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
