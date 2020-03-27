@@ -7,11 +7,17 @@ import CheckoutPage from "./pages/checkout/CheckoutPage";
 import ShopPage from "./pages/shop/ShopPage";
 import Header from "./components/header/Header";
 import AuthenticationPage from "./pages/Register&Login/AuthenticationPage";
-import { auth, createUserProfileDocument } from "./firebase/firebaseUtils";
+import {
+  auth,
+  createUserProfileDocument,
+  addCollectionAndDocuments
+} from "./firebase/firebaseUtils";
 import { SET_CURRENT_USER } from "./reducers/actionTypes";
+import { collections } from "./constants";
 
 function App() {
   const { currentUser } = useSelector(state => state.user);
+
   const dispatch = useDispatch();
   useEffect(() => {
     const unSubscribe = auth.onAuthStateChanged(async userAuth => {
@@ -35,6 +41,16 @@ function App() {
     });
     return () => unSubscribe();
   }, [dispatch]);
+  useEffect(() => {
+    addCollectionAndDocuments(
+      "collections",
+      Object.entries(collections).map(item => {
+        const { title, items } = item[1];
+        return { title, items };
+      })
+    );
+  }, []);
+
   return (
     <div>
       <Header />
