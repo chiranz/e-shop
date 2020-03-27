@@ -4,7 +4,7 @@ import {
   CLEAR_ITEM_FROM_CART,
   ADD_ITEM,
   REMOVE_ITEM
-} from "../../reducers/actionTypes";
+} from "../../reducers/actionTypes.user";
 import {
   CheckoutImageContainer,
   TextContainer,

@@ -1,4 +1,4 @@
-import { TOGGLE_CART_HIDDEN, ADD_ITEM } from "../actionTypes";
+import { TOGGLE_CART_HIDDEN, ADD_ITEM } from "../actionTypes.user";
 
 export function toggleCartHidden() {
   return {

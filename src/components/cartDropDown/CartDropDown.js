@@ -2,7 +2,7 @@ import React from "react";
 import CustomButton from "../CustomButton/CustomButton";
 import CartItem from "../cart-item/CartItem";
 import { useSelector, useDispatch } from "react-redux";
-import { TOGGLE_CART_HIDDEN } from "../../reducers/actionTypes";
+import { TOGGLE_CART_HIDDEN } from "../../reducers/actionTypes.user";
 import {
   CartDropDownContainer,
   CartItemsContainer,

@@ -7,8 +7,13 @@ export default function CollectionsOverview() {
   const { collections } = useSelector(state => state.shop);
   return (
     <CollectionsOverviewContainer>
-      {Object.values(collections).map(({ id, title, items }) => (
-        <CollectionPreview key={id} title={title} items={items.slice(0, 4)} />
+      {Object.values(collections).map(({ id, title, routeName, items }) => (
+        <CollectionPreview
+          key={id}
+          title={title}
+          routeName={routeName}
+          items={items.slice(0, 4)}
+        />
       ))}
     </CollectionsOverviewContainer>
   );

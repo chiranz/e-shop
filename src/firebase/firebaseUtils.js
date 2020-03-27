@@ -45,6 +45,23 @@ provider.setCustomParameters({ prompt: "select_account" });
 // SIGN IN WITH GOOGLE
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
+// Fetch Collections array and convert it to Object
+export const convertCollectionsSnapshotToMap = collections => {
+  const transformedCollection = collections.docs.map(doc => {
+    const { title, items } = doc.data();
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items
+    };
+  });
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
+};
+
 // Add data to firestore from frontend
 export const addCollectionAndDocuments = async (
   collectionKey,
