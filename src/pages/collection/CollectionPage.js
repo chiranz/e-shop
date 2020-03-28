@@ -8,9 +8,9 @@ import {
 } from "./CollectionPage.styled";
 
 export default function CollectionPage({ match }) {
-  let { collections } = useSelector(state => state.shop);
+  const { collections } = useSelector(state => state.shop);
   const { collectionId } = match.params;
-  let { title, items } = collections[collectionId];
+  const { title, items } = collections[collectionId];
 
   return (
     <CollectionPageContainer>

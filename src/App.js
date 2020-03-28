@@ -7,12 +7,17 @@ import CheckoutPage from "./pages/checkout/CheckoutPage";
 import ShopPage from "./pages/shop/ShopPage";
 import Header from "./components/header/Header";
 import AuthenticationPage from "./pages/Register&Login/AuthenticationPage";
-import { auth, createUserProfileDocument } from "./firebase/firebaseUtils";
+import {
+  auth,
+  createUserProfileDocument,
+  convertCollectionsSnapshotToMap,
+  firestore
+} from "./firebase/firebaseUtils";
 import { SET_CURRENT_USER } from "./reducers/actionTypes.user";
+import { UPDATE_COLLECTIONS } from "./reducers/shop/actionTypes.shop";
 
 function App() {
   const { currentUser } = useSelector(state => state.user);
-
   const dispatch = useDispatch();
   useEffect(() => {
     const unSubscribe = auth.onAuthStateChanged(async userAuth => {
@@ -32,6 +37,15 @@ function App() {
       dispatch({
         type: SET_CURRENT_USER,
         payload: userAuth
+      });
+    });
+
+    const collectionRef = firestore.collection("collections");
+    collectionRef.onSnapshot(async snapshot => {
+      const collections = await convertCollectionsSnapshotToMap(snapshot);
+      dispatch({
+        type: UPDATE_COLLECTIONS,
+        payload: collections
       });
     });
     return () => unSubscribe();

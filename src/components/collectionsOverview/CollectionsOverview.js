@@ -4,7 +4,8 @@ import CollectionPreview from "../collectionPreview/CollectionPreview";
 import { CollectionsOverviewContainer } from "./CollectionsOverview.styled";
 
 export default function CollectionsOverview() {
-  const { collections } = useSelector(state => state.shop);
+  let { collections } = useSelector(state => state.shop);
+
   return (
     <CollectionsOverviewContainer>
       {Object.values(collections).map(({ id, title, routeName, items }) => (
