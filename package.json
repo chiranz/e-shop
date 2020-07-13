@@ -10,10 +10,10 @@
   "scripts": {
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
-    "build": "cd client && npm run build",
+    "build": "cd client && yarn run build",
     "dev": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
     "start": "node server.js",
-    "heroku-postbuild": "cd client && yarn install && yarn install --only=dev no-shrinkwrap && yarn run build"
+    "heroku-postbuild": "cd client && yarn add && yarn add --only=dev no-shrinkwrap && yarn run build"
   },
   "repository": {
     "type": "git",
